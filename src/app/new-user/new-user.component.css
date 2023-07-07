@@ -1,0 +1,43 @@
+::-webkit-scrollbar {
+    width: 0;
+  }
+
+  input {
+    margin-bottom: 10px;
+  }
+
+  input:last-of-type {
+    margin-bottom: 10px;
+  }
+  button {
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .wrapper {
+    display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(var(--first-color), var(--second-color));
+  }
+  
+  .login-box {
+    display: flex; 
+    justify-content: center; 
+    flex-direction: column; 
+    width: 500px; 
+    height: 750px; 
+    background: rgb(200, 200, 200);  
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;  
+    border-radius: 50px;
+    z-index: 10;
+  }
+  
+  .login-content {
+    display: flex; 
+    align-items: center; 
+    flex-direction: column
+  }
+  
+  

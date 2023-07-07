@@ -1,0 +1,115 @@
+<div class="wrapper">
+  <div class="box-container">
+    <div class="box">
+      <div class="section-header">
+        <p>PRZELEWY</p>
+      </div>
+      <div
+        *ngIf="users"
+        style="
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 10px;
+        "
+      >
+        <div class="text-div">
+          <p>Odbiorca</p>
+        </div>
+        <select #select placeholder="Wybierz odbiorcę" autofocus="off">
+          <option *ngFor="let bankUser of users" value="{{ bankUser.id }}">
+            {{ bankUser.name + " " + bankUser.surname }}
+          </option>
+          <option *ngIf="users.length === 0">Brak wyników</option>
+        </select>
+      </div>
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 10px;
+        "
+      >
+        <div class="text-div">
+          <p>Numer rachunku</p>
+        </div>
+        <input
+          #accountNumberInput
+          type="text"
+          style="pointer-events: none; background: lightgrey"
+          formControlName="recieverAccountNumber"
+        />
+      </div>
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 10px;
+        "
+      >
+        <div class="text-div">
+          <p>Kwota przelewu</p>
+        </div>
+        <div style="display: flex; flex-direction: column">
+          <input
+            #transferValueInput
+            type="number"
+            (keyup)="setAfterTransferSaldo(transferValueInput.value)"
+            formControlName="transferValue"
+            [ngClass]="afterTransferSaldo < 0 ? 'field-invalid' : ''"
+          />
+          <p
+            style="margin-top: 5px"
+            [ngStyle]="{ color: afterTransferSaldo < 0 ? 'red' : '' }"
+          >
+            {{ "Saldo po operacji: " + this.afterTransferSaldo.toFixed(2) + " PLN" }}
+          </p>
+        </div>
+      </div>
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 10px;
+        "
+      >
+        <div class="text-div">
+          <p>Tytuł przelewu</p>
+        </div>
+        <input
+          #transferTitleInput
+          type="text"
+          formControlName="transferTitle"
+        />
+      </div>
+      <div style="display: flex; align-items: center; justify-content: end; flex-direction: column; margin-top: 150px">
+        <button
+          style="background: grey"
+          *ngIf="
+            !(
+              accountNumberInput.value &&
+              transferValueInput.value &&
+              transferTitleInput.value &&
+              afterTransferSaldo >= 0
+            )
+          "
+        >
+          Wyślij przelew
+        </button>
+        <button
+          *ngIf="
+            accountNumberInput.value &&
+            transferValueInput.value &&
+            transferTitleInput.value &&
+            afterTransferSaldo >= 0
+          "
+          (click)="sendTransfer(transferValueInput.value)"
+        >
+          Wyślij przelew
+        </button>
+        <button type="button" style="margin-top: 20px" (click)="decline()">
+          ANULUJ
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,147 @@
+<div class="wrapper">
+  <div class="box-container">
+    <div class="box">
+      <div class="section-header">
+        <p>KREDYTY</p>
+      </div>
+      <div
+        *ngIf="creditReasons"
+        style="
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 10px;
+        "
+      >
+        <div class="text-div">
+          <p>Powód wzięcia kredytu</p>
+        </div>
+        <select #select placeholder="Wybierz odbiorcę" autofocus="off">
+          <option
+            *ngFor="let creditReason of creditReasons"
+            value="{{ creditReason.name }}"
+          >
+            {{ creditReason.name }}
+          </option>
+        </select>
+      </div>
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 10px;
+        "
+      >
+        <div class="text-div">
+          <p>Kwota kredytu</p>
+        </div>
+        <input
+          #valueOfCreditInput
+          type="text"
+          (keyup)="calculateTotalCreditValue(valueOfCreditInput.value)"
+        />
+      </div>
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 10px;
+        "
+      >
+        <div class="text-div">
+          <p>Ilość rat</p>
+        </div>
+        <div style="display: flex; flex-direction: column">
+          <input
+            #numberOfInstallmentsInput
+            type="number"
+            (keyup)="
+              calculateValueOfInstallment(
+                numberOfInstallmentsInput.value,
+                totalValueOfCreditInput.value
+              )
+            "
+          />
+        </div>
+      </div>
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 10px;
+        "
+      >
+        <div class="text-div">
+          <p>Kwota raty</p>
+        </div>
+        <input
+          #valueOfInstallmentInput
+          type="text"
+          style="pointer-events: none; background: lightgrey"
+        />
+      </div>
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 10px;
+        "
+      >
+        <div class="text-div">
+          <p>Łączna kwota kredytu</p>
+        </div>
+        <input
+          #totalValueOfCreditInput
+          type="text"
+          style="pointer-events: none; background: lightgrey"
+        />
+      </div>
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 10px;
+        "
+      >
+        <div class="text-div">
+          <p>RRSO</p>
+        </div>
+        <input
+          #rrsoInput
+          type="text"
+          style="pointer-events: none; background: lightgrey"
+          [ngModel]="RRSO"
+        />
+      </div>
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-top: 100px;
+        "
+      >
+        <p style="margin-bottom: 10px; color: red">{{ message }}</p>
+        <button
+          style="background: grey"
+          *ngIf="!(valueOfCreditInput.value && numberOfInstallmentsInput.value)"
+        >
+          Weź kredyt
+        </button>
+        <button
+          *ngIf="valueOfCreditInput.value && numberOfInstallmentsInput.value"
+          (click)="
+            checkIfUserCanGetCredit(
+              valueOfCreditInput.value,
+              numberOfInstallmentsInput.value
+            )
+          "
+        >
+          Weź kredyt
+        </button>
+        <button type="button" style="margin-top: 20px" (click)="decline()">
+          ANULUJ
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

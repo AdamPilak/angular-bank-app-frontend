@@ -1,0 +1,77 @@
+<div *ngIf="this.loginForm" class="wrapper">
+  <div style="position: absolute; top: 35px; display: flex; justify-content: center; width: 100%;">
+    <div style="padding: 10px 30px; background-color: var(--second-color); color: white; font-size: 50px; border-radius: 10px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; font-weight: bold; letter-spacing: 1px;  
+      ">PAD</div>
+  </div>
+  <form [formGroup]="this.loginForm" (ngSubmit)="checkUser(username.value, password.value)"
+    style="margin-right: 15px; position: relative;" class="login-box">
+    <div style="position: absolute; top: 50px; display: flex; justify-content: center; width: 100%;">
+      <div style="padding: 10px 30px; background-color: var(--second-color); color: white; font-size: 20px; border-radius: 5px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; font-weight: bold; letter-spacing: 1px;  
+      ">LOGOWANIE</div>
+    </div>
+    <div class="login-content">
+      <input type="text" name="username" formControlName="username" placeholder="Nazwa/email" [ngClass]="
+      password.errors?.invalid && (loginForm.controls.username.dirty || loginForm.controls.password.dirty)
+          ? 'field-invalid'
+          : ''
+      " />
+      <input type="password" name="password" formControlName="password" placeholder="Hasło" [ngClass]="
+      password.errors?.invalid && (loginForm.controls.username.dirty || loginForm.controls.password.dirty)
+          ? 'field-invalid'
+          : ''
+      " />
+      <div>
+        <p *ngIf="password.errors?.invalid && (loginForm.controls.username.dirty || loginForm.controls.password.dirty)"
+          class="field-invalid-text">
+          Niepoprawny login lub hasło
+        </p>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; flex-direction: column">
+      <button type="submit">ZALOGUJ</button>
+      <button (click)="navigateToNewUser()">Utwórz konto</button>
+    </div>
+  </form>
+  <div style="margin-left:15px; position: relative;" class="login-box">
+    <div style="position: absolute; top: 50px; display: flex; justify-content: center; width: 100%;">
+      <div style="padding: 10px 30px; background-color: var(--second-color); color: white; font-size: 20px; border-radius: 5px;   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; font-weight: bold; letter-spacing: 1px;  
+      ">FUNKCJONALNOŚCI</div>
+    </div>
+    <div
+      style="display: flex; height: 100%; margin-top: 130px; margin-bottom: 50px; flex-direction: column; justify-content: space-between; overflow-y: scroll;">
+      <div
+        style="margin: 10px 50px; padding: 10px; background: var(--first-color); border-radius: 5px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+        <p style="font-weight: bold; color: white">LOGOWANIE - Użytkownik może utworzyć kont w systemie, aby móc z niego skorzystać. Przy tworzeniu konta użytkownik musi podać swoje dane oraz przejść proces walidacji. Data urodzenia oraz płeć są przez system.</p>
+      </div>
+      <div
+        style="margin: 10px 50px; padding: 10px; background: var(--first-color); border-radius: 5px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+        <p style="font-weight: bold; color: white">HISTORIA - Użytkownik po zalogowaniu do systemu ma dostęp do swojej historii operacji, która uwzględnia przelewy, wzięcia kredytu oraz przewalutowania. Historię można filtrować po wszystkich wymienionych wcześniej kategoriach.</p>
+      </div>
+      <div
+        style="margin: 10px 50px; padding: 10px; background: var(--first-color); border-radius: 5px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+        <p style="font-weight: bold; color: white">PRZELEWY - System zezwala na wysłanie przelewów pomiędzy użytkownikami banku. Nie można zlecić przelewu którego wartość przekracza aktualny stan konta użytkownika. Po pomyślnym dokonaniu przelewu środki są księgowane i zarówno historia zleconiodawcy jak i odbiorcy ulega zmianie.</p>
+      </div>
+      <div
+        style="margin: 10px 50px; padding: 10px; background: var(--first-color); border-radius: 5px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+        <p style="font-weight: bold; color: white">PRZEWALUTOWANIA - System udostępnia kalkulator przewalutowań, który na podstawie najaktualniejszych kursów walut pozwala na symulacje przewalutowań dowolnych kwot.</p>
+      </div>
+      <div
+        style="margin: 10px 50px; padding: 10px; background: var(--first-color); border-radius: 5px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+        <p style="font-weight: bold; color: white">KREDYTY - Użytkownik systemu ma możliwość wzięcia kredytu na dowolną kwotę, aby otrzymać przelew użytkownik musi mieć skończone 18 lat oraz jego aktualny stan konta musi przekraczać 10% kwoty kredytu bez RRSO, a w przypadku posiadania jednego lub więcej aktywnych kredytów procent ten wzrasta do 30%.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ul class="circles">
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>

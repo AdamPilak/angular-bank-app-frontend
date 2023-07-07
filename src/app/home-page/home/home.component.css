@@ -1,0 +1,98 @@
+/* info */
+.info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  height: 100%;
+  /* font-size: 12px; */
+}
+
+.info-item {
+  display: flex;
+  align-items: space-between;
+  flex-direction: column;
+  height: 100%;
+  width: 48%;
+  margin-top: 5px;
+}
+
+.info-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.info-header {
+  text-transform: uppercase;
+  padding: 5px 10px;
+  font-weight: bold;
+  color: white;
+  width: 100%;
+  background: var(--second-color);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;  
+
+}
+
+.info-data {
+  padding: 5px 10px;
+  color: white;
+  width: 100%;
+  background: var(--first-color);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;  
+
+}
+
+/* history */
+table {
+  position: relative;
+  width: 100%;
+}
+
+::-webkit-scrollbar{
+  width: 0;
+  background-color: #444;
+}
+
+tbody {
+  display: block;
+  overflow-y: scroll;
+  height: 160px;
+}
+
+thead, tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;/* even columns width , fix width of table too*/
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--second-color);
+  border-radius: 10px;
+  height: 50px;
+  width: 100%;
+  padding: 0 15px;
+  color: #fff;
+  font-weight: bold;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;  
+}
+
+select {
+  height: 55%;
+  width: 35%;
+  border-radius: 5px;
+}
+
+tr div {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid grey;
+}

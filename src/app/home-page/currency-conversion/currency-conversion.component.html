@@ -1,0 +1,112 @@
+<div class="wrapper">
+  <div class="box-container">
+    <div class="box">
+      <div class="section-header">
+        <p>KALKULATOR PRZEWALUTOWAŃ</p>
+      </div>
+      <div
+        *ngIf="currencies"
+        style="
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 10px;
+        "
+      >
+        <div class="text-div">
+          <p>Waluta początkowa</p>
+        </div>
+        <select #startCurrency placeholder="Wybierz walutę" autofocus="off">
+          <option
+            *ngFor="let currency of currencies"
+            value="{{ currency.name }}"
+          >
+            {{ currency.name }}
+          </option>
+        </select>
+      </div>
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 10px;
+        "
+      >
+        <div class="text-div">
+          <p>Waluta docelowa</p>
+        </div>
+        <select #endCurrency placeholder="Wybierz walutę" autofocus="off">
+          <option
+            *ngFor="let currency of currencies"
+            value="{{ currency.name }}"
+          >
+            {{ currency.name }}
+          </option>
+        </select>
+      </div>
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 10px;
+        "
+      >
+        <div class="text-div">
+          <p>Kwota</p>
+        </div>
+        <div style="display: flex; flex-direction: column">
+          <input #startValue type="text" (keyup)="changeValue(startValue.value)"/>
+        </div>
+      </div>
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 10px;
+        "
+      >
+        <div class="text-div">
+          <p>Przelicznik</p>
+        </div>
+        <div style="display: flex; flex-direction: column">
+          <input
+            #converterValue
+            type="number"
+            style="pointer-events: none; background: lightgrey"
+          />
+        </div>
+      </div>
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 10px;
+        "
+      >
+        <div class="text-div">
+          <p>Kwota po przewalutowaniu</p>
+        </div>
+        <div style="display: flex; flex-direction: column">
+          <input
+            #endValue
+            type="number"
+            style="pointer-events: none; background: lightgrey"
+          />
+        </div>
+      </div>
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-top: 150px;
+        "
+      >
+        <button *ngIf="!startValue.value" style="background: grey">Przelicz</button>
+        <button (click)="convert()" *ngIf="startValue.value">Przelicz</button>
+        <button style="margin-top: 20px" (click)="decline()">
+          ANULUJ
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

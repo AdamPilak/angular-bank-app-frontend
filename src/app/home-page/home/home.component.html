@@ -1,0 +1,76 @@
+<div class="wrapper">
+  <div class="box-container">
+    <div class="box" [style]="{ height: '58%' }">
+      <div *ngIf="user" class="info">
+        <div class="info-item">
+          <div class="info-content">
+            <div class="info-header">Imię i nazwisko</div>
+            <div class="info-data">{{ user.name + " " + user.surname }}</div>
+          </div>
+          <div class="info-content">
+            <div class="info-header">nazwa</div>
+            <div class="info-data">{{ user.username }}</div>
+          </div>
+          <div class="info-content">
+            <div class="info-header">email</div>
+            <div class="info-data">{{ user.email }}</div>
+          </div>
+          <div class="info-content">
+            <div class="info-header">pesel</div>
+            <div class="info-data">{{ user.pesel }}</div>
+          </div>
+          <div class="info-content">
+            <div class="info-header">numer telefonu</div>
+            <div class="info-data">{{ user.phoneNumber }}</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-content">
+            <div class="info-header">saldo</div>
+            <div class="info-data">{{ user.saldo.toFixed(2) + ' PLN' }}</div>
+          </div>
+          <div class="info-content">
+            <div class="info-header">numer konta</div>
+            <div class="info-data">{{ user.accountNumber }}</div>
+          </div>
+          <div class="info-content">
+            <div class="info-header">data urodzenia</div>
+            <div class="info-data">
+              {{ user.dateOfBirth | date: "dd/MM/yyyy" }}
+            </div>
+          </div>
+          <div class="info-content">
+            <div class="info-header">Płeć</div>
+            <div class="info-data">{{ user.sex }}</div>
+          </div>
+          <div class="info-content">
+            <div class="info-header">aktywne kredyty</div>
+            <div class="info-data">{{ user.activeCredits }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="box" [style]="{ height: '38%' }">
+      <div class="history">
+        <table>
+          <thead>
+            <div class="table-header">
+              <p>Historia</p>
+              <select #select>
+                <option value="0">Wszystko</option>
+                <option value="1">Przelewy</option>
+                <option value="2">Przewalutowania</option>
+                <option value="3">Kredyty</option>
+              </select>
+            </div>
+          </thead>
+          <tbody>
+            <tr *ngFor="let log of logs">
+              <div>{{ log.description }}</div>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

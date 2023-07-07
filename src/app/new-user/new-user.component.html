@@ -1,0 +1,76 @@
+<div class="wrapper" *ngIf="this.newUserForm">
+  <form [formGroup]="this.newUserForm" (ngSubmit)="saveNewUser()" style="position: relative" class="login-box">
+    <div style="
+        position: absolute;
+        top: 50px;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      ">
+      <div style="
+          padding: 10px 30px;
+          background-color: var(--second-color);
+          color: white;
+          font-size: 20px;
+          border-radius: 5px;
+          box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+          font-weight: bold;
+          letter-spacing: 1px;
+        ">
+        NOWY UŻYTKOWNIK
+      </div>
+    </div>
+    <div class="login-content" style="overflow-y: scroll">
+      <div style="
+          display: flex;
+          height: 100%;
+          margin-top: 100px;
+          margin-bottom: 50px;
+          flex-direction: column;
+          justify-content: space-between;
+        ">
+        <input type="text" name="name" formControlName="name" placeholder="Imię" required
+          [ngClass]="name.errors?.required && name.dirty ? 'field-invalid' : ''" />
+        <input type="text" name="surname" formControlName="surname" placeholder="Nazwisko" [ngClass]="
+            surname.errors?.required && surname.dirty ? 'field-invalid' : ''
+          " />
+        <input type="text" name="username" formControlName="username" placeholder="Nazwa" [ngClass]="
+            username.errors?.required && username.dirty ? 'field-invalid' : ''
+          " />
+        <input type="password" name="password" formControlName="password" placeholder="Hasło" [ngClass]="
+            password.errors && password.dirty ? 'field-invalid' : ''
+          " />
+        <p *ngIf="password.errors && password.dirty && password.value"
+          style="width: 300px; margin-bottom: 10px; color: red">Hasło musi zawierać jedną duzą literę, jedną cyfrę,
+          jeden znak specjalny i mieć minimum 8 znaków</p>
+        <input type="text" name="email" formControlName="email" placeholder="Email"
+          [ngClass]="email.errors && email.dirty ? 'field-invalid' : ''" />
+        <input type="text" name="pesel" formControlName="pesel" placeholder="Pesel" maxlength="11"
+          [ngClass]="pesel.errors && pesel.dirty ? 'field-invalid' : ''" />
+        <input type="text" name="phoneNumber" formControlName="phoneNumber" placeholder="Numer telefonu" maxlength="9"
+          [ngClass]="
+            phoneNumber.errors?.required && phoneNumber.dirty
+              ? 'field-invalid'
+              : ''
+          " />
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; flex-direction: column;">
+      <button type="submit" style="margin-bottom: 0">UTWÓRZ KONTO</button>
+      <button type="button" style="margin-top: 20px" (click)="decline()">ANULUJ</button>
+    </div>
+  </form>
+</div>
+
+<ul class="circles">
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
